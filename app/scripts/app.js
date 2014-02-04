@@ -10,7 +10,13 @@ angular.module('daFunkApp', [
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        reloadOnSearch: false
+      })
+      .when('/:user/:repository', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        reloadOnSearch: false
       })
       .otherwise({
         redirectTo: '/'

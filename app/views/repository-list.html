@@ -1,1 +1,7 @@
-<p>This is the repository-list view.</p>
+<div>{{searchResults.total_count}} repositories found</div>
+<div>
+<ul class="list-group">
+  <li ng-repeat="item in searchResults.items" class="list-group-item"><a ng-href="#/{{item.full_name}}?search={{search}}">{{item.full_name}}</a></li>
+</ul>
+  {{searchResults}}
+</div>
