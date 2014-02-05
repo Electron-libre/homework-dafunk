@@ -5,10 +5,5 @@ angular.module('daFunkApp')
     return {
       templateUrl: 'views/repository-select.html',
       restrict: 'E',
-      controller: function ($scope) {
-        return {
-
-        }
-      }
     };
   });
