@@ -5,7 +5,9 @@ angular.module('daFunkApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'nvd3ChartDirectives'
+  'nvd3ChartDirectives',
+  'perfect_scrollbar',
+  'ngProgress'
 ])
   .config(function ($routeProvider) {
     $routeProvider

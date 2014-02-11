@@ -1,5 +1,13 @@
 <h3>Committers</h3>
-
-<nvd3-pie-chart id="committersCommits" data="repository_statistics.committers" x="committerLogin()" y="commits()"  width="550" height="350" donut="true" showLegend="true">
-<svg height="250"></svg>
+<nvd3-pie-chart id="committersCommits" height="250" data="repository_statistics.committers" x="committerLogin()" y="commits()"   donut="true" showLegend="true" tooltip="true" interactive="true">
+<svg ></svg>
 </nvd3-pie-chart>
+<ul class="list-group  list-inline" >
+  <li ng-class="{ focus: committer.committer.login == tooltipData.user}" class="list-group-item" ng-repeat="committer in repository_statistics.committers">
+  <img ng-if="committer.committer.login != 'null'"  width="40px"  ng-src="{{committer.committer.avatar_url}}"/>
+  </br> 
+  <a ng-href="http://github.com/{{committer.committer.login}}"> {{committer.committer.login}}</a>
+  <p ng-if="committer.committer.login == tooltipData.user">{{tooltipData.commits_count}} commits on {{tooltipData.on}} </p>
+  </li>
+</ul>
+

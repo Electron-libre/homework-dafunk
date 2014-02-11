@@ -16,3 +16,31 @@ body {
 .repository-select header {
   padding-top: 1em;
 }
+
+.search-results {
+  max-height: 80%;
+  overflow-y:hidden;
+  white-space: pre-line;
+  position:relative;
+}
+
+.committers-list {
+  overflow-x: hidden;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.focus {
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+  -webkit-transform: scale(2);
+  transform: scale(2);
+  z-index: 100;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out; 
+}
+
+

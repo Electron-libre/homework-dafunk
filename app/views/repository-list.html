@@ -1,6 +1,6 @@
 <div>{{searchResults.total_count}} repositories found</div>
-<div>
-<ul class="list-group">
-  <li ng-repeat="item in searchResults.items" class="list-group-item"><a ng-href="#/{{item.full_name}}?search={{search}}">{{item.full_name}}</a></li>
-</ul>
-</div>
+<perfect-scrollbar  class="search-results"  wheel-speed="50" refresh-on-change="searchResults.items">
+  <ul ng-scrollbar class="list-group" >
+    <li ng-repeat="item in searchResults.items" class="list-group-item"><a ng-href="#/{{item.full_name}}?search={{search}}">{{item.full_name}}</a></li>
+  </ul>
+</perfect-scrollbar>
