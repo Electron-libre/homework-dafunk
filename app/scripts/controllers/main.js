@@ -75,7 +75,7 @@ angular.module('daFunkApp')
                 ngProgress.start();
                 $location.search($scope.search);
 
-                $http.get('http://localhost:9000/repositories', {
+                $http.get('/repositories', {
                     params: $scope.search,
                     cache: true
                 }).
@@ -135,7 +135,7 @@ angular.module('daFunkApp')
             if ($routeParams.user && $routeParams.repository) {
                 ngProgress.reset();
                 ngProgress.start();
-                $http.get('http://localhost:9000/repositories/' + $routeParams.user + '/' + $routeParams.repository + '/statistics', {
+                $http.get('/repositories/' + $routeParams.user + '/' + $routeParams.repository + '/statistics', {
                     cache: true
                 }).
                 success(function(data, status, headers, config) {
