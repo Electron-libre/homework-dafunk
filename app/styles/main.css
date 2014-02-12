@@ -51,3 +51,16 @@ h3 {
   padding: 0.5em;
   color: #888;
 }
+
+.avatar {
+  width: 32px;
+  height: 32px;
+}
+.panel {
+  padding: 0px;
+  border-radius: 0;
+  margin-bottom:  0px;
+}
+.list-inline li {
+  padding: 0px;
+}

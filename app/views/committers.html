@@ -1,18 +1,25 @@
 <div class="col-sm-6">
-<h3>Committers Contributions</h3>
-<nvd3-pie-chart id="committersCommits" height="250" data="repository_statistics.committers" x="committerLogin()" y="commits()"   donut="true" showLegend="true" tooltip="true" interactive="true">
-<svg ></svg>
-</nvd3-pie-chart>
+  <h3>Committers Contributions</h3>
+  <nvd3-pie-chart id="committersCommits" height="250" data="repository_statistics.committers" x="committerLogin()" y="commits()"   donut="true" showLegend="true" interactive="true">
+  <svg ></svg>
+  </nvd3-pie-chart>
 </div>
 
 <div class="col-sm-6">
-<h3>Committers details</h3>
-<ul class="list-group  list-inline" >
-  <li ng-class="{ focus: committer.committer.login == tooltipData.user}" class="list-group-item" ng-repeat="committer in repository_statistics.committers">
-  <img ng-if="committer.committer.login != 'null'"  width="40px"  ng-src="{{committer.committer.avatar_url}}"/>
-  </br> 
-  <a ng-href="http://github.com/{{committer.committer.login}}"> {{committer.committer.login}}</a>
-  <p ng-if="committer.committer.login == tooltipData.user">{{tooltipData.commits_count}} commits on {{tooltipData.on}} </p>
-  </li>
-</ul>
+  <h3>Committers details</h3>
+
+  <ul class="list-inline" >
+    <li ng-class="{ focus: committer.committer.login == tooltipData.user}" class="panel panel-default" ng-repeat="committer in repository_statistics.committers">
+    <div class="panel-heading media">
+      <img ng-if="committer.committer.login != 'null'" class="media-object pull-left avatar"  ng-src="{{committer.committer.avatar_url}}"/> 
+      <div class="media-body">
+        <a ng-href="http://github.com/{{committer.committer.login}}"> {{committer.committer.login}}</a>
+      </div>
+    </div>
+    <div class="panel-body" ng-if="committer.committer.login == tooltipData.user">
+      {{tooltipData.commits_count}} commits on {{tooltipData.on}} 
+    </div>
+    </li>
+  </ul>
+
 </div>
