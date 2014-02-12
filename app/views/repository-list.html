@@ -1,13 +1,14 @@
 <div class="pagination-panel">
-  <div class="pull-right">
+  <div> Repositories found: {{searchResults.total_count}}  <span class="pull-right" ng-if="(totalPages > 1)">Page {{(currentPage)}} on {{totalPages}}</span>
+  </div>
+  <div class="btn-group btn-group-justified">
     <a ng-if="prevPage" class="btn btn-default" ng-click="getPage(prevPage)">
       <span class="glyphicon glyphicon-backward"></span> Previous
     </a> 
     <a ng-if="nextPage" class="btn btn-default" ng-click="getPage(nextPage)">
       Next <span class="glyphicon glyphicon-forward"></span> 
     </a>
-  </div> <div> Repositories found: {{searchResults.total_count}} </div>
-  <div ng-if="(totalPages > 1)">Page {{(currentPage)}} on {{totalPages}}</div>
+  </div> 
 </div>
 <perfect-scrollbar  class="search-results"  wheel-speed="50" refresh-on-change="searchResults.items">
 <ul ng-scrollbar class="list-group" >
