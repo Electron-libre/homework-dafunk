@@ -12,7 +12,7 @@ angular.module('daFunkApp')
                     $scope.tooltipData = {
                         user: event.label,
                         commits_count: event.value,
-                        on: '100'
+                        on: $scope.repository_statistics.commits_count 
                     }
                 } else {
                     $scope.tooltipData = {
