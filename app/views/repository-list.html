@@ -1,5 +1,5 @@
 <div class="pagination-panel">
-  <div> Repositories found: {{searchResults.total_count}}  <span class="pull-right" ng-if="(totalPages > 1)">Page {{(currentPage)}} on {{totalPages}}</span>
+  <div ng-if="searchResults">Repositories found: {{searchResults.total_count}}  <span class="pull-right" ng-if="(totalPages > 1)">Page {{(currentPage)}} on {{totalPages}}</span>
   </div>
   <div class="btn-group btn-group-justified">
     <a ng-if="prevPage" class="btn btn-default" ng-click="getPage(prevPage)">
