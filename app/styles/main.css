@@ -20,7 +20,6 @@ body {
 .search-results {
   max-height: 80%;
   overflow-y:hidden;
-  white-space: pre-line;
   position:relative;
 }
 

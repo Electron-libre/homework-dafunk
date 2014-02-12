@@ -63,29 +63,71 @@ angular.module('daFunkApp')
                     return d3.time.format('%y-%b')(new Date(data));
                 };
             }
+
+
             // Search functions
+            // TODO: Move in a some logic in service
+            
+
+            // Request search results for the current query and page
             $scope.query = function() {
                 ngProgress.reset();
                 ngProgress.start();
-                $location.search({
-                    search: $scope.search
-                });
+                $location.search($scope.search);
 
                 $http.get('http://localhost:9000/repositories', {
-                    params: {
-                        q: $scope.search
-                    },
+                    params: $scope.search,
                     cache: true
                 }).
                 success(function(data, status, headers, config) {
                     $scope.searchResults = data;
                     ngProgress.complete();
+                    $scope.setPaginationState();
                 });
             }
 
+            $scope.setPaginationState = function() {
+                    $scope.nextPage = $scope.getPageNumber('next');
+                    $scope.prevPage = $scope.getPageNumber('prev');
+                    $scope.currentPage = function() { if ($scope.prevPage) { 
+                      return parseInt($scope.prevPage) + 1
+                    } else {
+                      return 1
+                    }}();
+                    $scope.totalPages = Math.ceil($scope.searchResults.total_count / 30);
+            }
+
+            // Returns page number for the given way ( 'prev' , 'next')
+            $scope.getPageNumber = function(way) {
+              if ($scope.searchResults && $scope.searchResults.link) {
+                var lnk = $scope.searchResults.link.filter(function(e) {
+                    return e.rel == way
+                })
+                if (lnk.length > 0) {
+                  return lnk[0].page
+                } else {
+                  return null
+                }
+              }
+            }
+
+            // Fetch pagination results for the given page
+            // on the current search term.
+            $scope.getPage = function(page) {
+                $scope.search.page = page;
+                $scope.query();
+            }
+            
+            // Execute new search:
+            //  Removes the page from state
+            $scope.newSearch = function() {
+              delete $scope.search['page'];
+              $scope.query();
+            }
+
             // Set search from url and execute query
-            if ($location.search().search != undefined) {
-                $scope.search = $location.search().search;
+            if ($location.search().q) {
+                $scope.search = $location.search();
                 $scope.query();
             }
 

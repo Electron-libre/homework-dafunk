@@ -1,6 +1,8 @@
-<div>{{searchResults.total_count}} repositories found</div>
+ <div> Repositories found: {{searchResults.total_count}} </div>
+ <div ng-if="(totalPages > 1)">Page {{(currentPage)}} on {{totalPages}}</div>
+<a ng-if="prevPage" ng-click="getPage(prevPage)">Previous</a> <a ng-if="nextPage" ng-click="getPage(nextPage)">Next</a>
 <perfect-scrollbar  class="search-results"  wheel-speed="50" refresh-on-change="searchResults.items">
   <ul ng-scrollbar class="list-group" >
-    <li ng-repeat="item in searchResults.items" class="list-group-item"><a ng-href="#/{{item.full_name}}?search={{search}}">{{item.full_name}}</a></li>
+    <li ng-repeat="item in searchResults.items" class="list-group-item"><a ng-href="#/{{item.full_name}}?q={{search.q}}">{{item.full_name}}</a></li>
   </ul>
 </perfect-scrollbar>
